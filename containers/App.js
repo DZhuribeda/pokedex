@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Immutable from 'immutable'
+import Radium from 'radium'
 
 import Header from '../components/Header'
 import PokemonList from '../components/PokemonList'
@@ -16,7 +17,7 @@ export default class App extends Component {
   	const { children, pokemons, loadPokemons } = this.props;
     console.log(pokemons);
     return (
-      <div>
+      <div style={styles.root}>
         <Header />
         <PokemonList pokemons={pokemons} 
                      loadMore={() => {
@@ -29,8 +30,15 @@ export default class App extends Component {
   }
 }
 
+const styles = {
+  root: {
+    fontFamily: '"Roboto","Helvetica","Arial",sans-serif',
+    fontWeight: '400'
+  }
+}
+
 App.propTypes = {
-  pokemons: PropTypes.instanceOf(Immutable.ArrayMapNode).isRequired
+  pokemons: PropTypes.instanceOf(Immutable.List).isRequired
 }
 
 const mapStateToProps = (state) => {
@@ -42,4 +50,4 @@ const mapStateToProps = (state) => {
 export default connect(
   mapStateToProps,
   { loadPokemons }
-)(App)
+)(Radium(App))
