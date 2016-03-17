@@ -1,12 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react';
 
-export default class PokemonContainer extends Component {
+const PokemonContainer = () => (
+  <div>
+    <h1>Hello Pokemon!</h1>
+  </div>
+);
 
-  render() {
-    return (
-      <div>
-        <h1>Hello Pokemon!</h1>
-      </div>
-    )
-  }
-}
+export default PokemonContainer;

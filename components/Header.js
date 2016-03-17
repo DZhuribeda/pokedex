@@ -1,16 +1,10 @@
-import React, { Component } from 'react'
-import Radium from 'radium'
+import React from 'react';
+import Radium from 'radium';
 
-class Header extends Component {
+const Header = () => (
+    <div>
+      <h1 style={ { textAlign: 'center' } }>Pokemon</h1>
+    </div>
+  );
 
-  render() {
-    return (
-      <div>
-        <h1 style={{textAlign: 'center'}}>Pokemon</h1>
-      </div>
-    )
-  }
-}
-
-Header = Radium(Header)
-export default Header
+export default Radium(Header);
