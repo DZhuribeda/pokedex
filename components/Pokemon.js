@@ -1,4 +1,6 @@
 import React, { PropTypes } from 'react';
+import { Link } from 'react-router';
+import Immutable from 'immutable';
 import Radium from 'radium';
 
 const styles = {
@@ -25,16 +27,17 @@ const styles = {
 };
 
 const Pokemon = (props) => {
-  const { name, img, types } = props;
+  const { name, img, types, id } = props;
   return (
     <div style={styles.card}>
       <div>
         <img src={img} style = {styles.img} />
-        <h4 >{name}</h4>
+        <h4 ><Link to={`/${id}`}>{name}</Link></h4>
       </div>
       <div>
         {types.map(type => (
-          <button style={styles.button}>
+          <button key={`pokemon_${name}_type_${type}`}
+            style={styles.button}>
             {type}
           </button>
         ))}
@@ -44,9 +47,10 @@ const Pokemon = (props) => {
 };
 
 Pokemon.propTypes = {
+  id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   img: PropTypes.string.isRequired,
-  types: PropTypes.array.isRequired,
+  types: PropTypes.instanceOf(Immutable.List).isRequired,
 };
 
 export default Radium(Pokemon);

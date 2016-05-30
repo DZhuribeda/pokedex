@@ -26,8 +26,8 @@ export default class App extends Component {
       <div style={styles.root}>
         <Header />
         <PokemonList pokemons={pokemons}
-          loadMore={() => loadPokemons(pokemons.size) } />
-        {children}
+          loadMore={() => loadPokemons(pokemons.size) }
+          children={children} />
       </div>
     );
   }

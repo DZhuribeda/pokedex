@@ -22,15 +22,20 @@ const styles = {
 };
 
 const PokemonList = (props) => {
-  const { pokemons, loadMore } = props;
+  const { pokemons, loadMore, children } = props;
   return (
+    <div>
      <div style={styles.root}>
         {pokemons.map(pokemon => (
-          <Pokemon name={pokemon.name}
-            img={pokemon.img}
-            types={pokemon.types} />
+          <Pokemon key={`pokemon_${pokemon.get('id')}`}
+            id={pokemon.get('id')}
+            name={pokemon.get('name')}
+            img={pokemon.get('img')}
+            types={pokemon.get('types')} />
         ))}
       <button onClick={loadMore} style={styles.loadMore}>Load More</button>
+    </div>
+    { children }
     </div>
   );
 };
@@ -38,6 +43,7 @@ const PokemonList = (props) => {
 
 PokemonList.propTypes = {
   pokemons: PropTypes.instanceOf(Immutable.List).isRequired,
+  children: PropTypes.element,
   loadMore: PropTypes.func.isRequired,
 };
 

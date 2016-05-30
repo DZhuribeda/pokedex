@@ -5,7 +5,7 @@ import PokemonContainer from './containers/PokemonContainer';
 
 export default (
   <Route path="/" component={App}>
-    <Route path="/:pokemon_id"
+    <Route path="/:pokemonId"
       component={PokemonContainer} />
   </Route>
 );
